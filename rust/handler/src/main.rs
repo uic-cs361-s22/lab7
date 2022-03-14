@@ -1,9 +1,6 @@
 #![feature(stdin_forwarders)]
 use nix::unistd::{getpid, Pid};
-use signal_hook::{iterator::SignalsInfo};
-use signal_hook::consts::signal::{SIGINT, SIGTSTP};
 use std::{thread, time::Duration};
-use signal_hook::iterator::exfiltrator::origin::WithOrigin;
 use std::io;
 use std::io::Read;
 use nix::sys::signal::{kill, signal, SigHandler, Signal};
@@ -26,6 +23,7 @@ extern "C" fn handle_signal(signum: libc::c_int) {
 
             // TODO 5-1 (continue): call this function if the received signal is SIGINT
             // send_signal(SIGTSTP);
+            _ => {}
         }
         println!("Type exit to quit the program...");
 }
@@ -33,7 +31,6 @@ extern "C" fn handle_signal(signum: libc::c_int) {
 fn main() {
 
     // TODO 1-1: register signal handler for SIGTSTP and SIGINT
-
     println!("Type exit to quit the program...");
     let lines = io::stdin().lines();
     for line in lines {

@@ -1,4 +1,5 @@
 #include "helper.h"
+#include <unistd.h>
 
 void signal_handler(int sig) {
     // TODO 5-3: upon receiving SIGTSTP, print "SIGTSTP received"
@@ -11,6 +12,7 @@ int main() {
     if (pid) {
         printf("Send SIGINT to handler (pid: %ld)\n", pid);
         // TODO 4: send SIGINT signal to pid using "kill" function
+        // sleep(10);
     }
     return 0;	
 }

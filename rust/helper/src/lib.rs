@@ -17,7 +17,7 @@ pub fn find_pid(target: String) -> i32 {
                 // can help us find the program name. First, read /proc's man page and 
                 // then create an absolute path (based on "/proc/%s/[file]" template) 
                 // and replace {path} below with it:
-                let cmdline = fs::read_to_string({path}).unwrap();
+                let cmdline = fs::read_to_string("path").unwrap();
                 let cmdline = cmdline.trim_matches(char::from(0));
                 if !cmdline.eq(&target) {
                     continue;
@@ -25,9 +25,9 @@ pub fn find_pid(target: String) -> i32 {
 
                 // TODO 3-1: retrieve metadata struct for the file (i.e. path).
                 // use fs::metadata. https://doc.rust-lang.org/stable/std/fs/fn.metadata.html
-                let metadata = // TODO3: <fill code here>;
+                // let metadata = <Fill code here>
+                // let uid = metadata.uid();
 
-                let uid = metadata.uid();
                 // TODO 3-2: this if clause checks whether the content of the special file
                 // matches the program name we are looking for. Since many students/users  
                 // could be running the same program, add additional condition to find the 
