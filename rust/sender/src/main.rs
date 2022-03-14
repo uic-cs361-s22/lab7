@@ -12,12 +12,6 @@ use libc::{siginfo_t, c_int, c_void};
 use helper::find_pid;
 
 extern "C" fn handle_signal(signum: libc::c_int) {
-    if Signal::try_from(signum).unwrap() == Signal::SIGTSTP {
-        println!("SIGTSTP recieved");
-    }
-}
-
-extern "C" fn sighandler(_: c_int, info: *mut siginfo_t, _: *mut c_void) {
     // TODO 5-3: upon receiving SIGTSTP, print "SIGTSTP received"
 }
 
